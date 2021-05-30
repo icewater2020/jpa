@@ -10,7 +10,8 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <!--  添加持久化类      -->
-        <class>top.wansho.jpa.helloworld.Customer</class>
+        <class>top.wansho.jpa.entity.Customer</class>
+        <class>top.wansho.jpa.entity.Order</class>
 
         <properties>
             <!-- 配置连接数据库的基本信息 -->

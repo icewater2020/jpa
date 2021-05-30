@@ -3,14 +3,12 @@ package top.wansho.jpa;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import top.wansho.jpa.helloworld.Customer;
+import top.wansho.jpa.entity.Customer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class EntityManagerTest {
 
@@ -30,9 +28,9 @@ public class EntityManagerTest {
     @AfterEach
     public void destroy(){
         // 提交事务
-        entityTransaction.rollback();
+//        entityTransaction.rollback();
         System.out.println("entityTransaction is active? " + entityTransaction.isActive()); // true
-//        entityTransaction.commit();
+        entityTransaction.commit();
         System.out.println("entityTransaction is active? " + entityTransaction.isActive()); // false
         entityManager.close();
         entityManagerFactory.close();
@@ -51,7 +49,7 @@ public class EntityManagerTest {
     public void testGetReference(){
         // 类似于 Hibernate 中的 load 方法
         Customer customer = entityManager.getReference(Customer.class, 1); // 只获取引用
-        System.out.println(customer.getClass().getName()); // top.wansho.jpa.helloworld.Customer$HibernateProxy$GLVOzPIc
+        System.out.println(customer.getClass().getName()); // top.wansho.jpa.entity.Customer$HibernateProxy$GLVOzPIc
         System.out.println("-------------------------");
         System.out.println(customer);
         // 先打印 --，再打印查询语句，懒加载，懒汉式，customer 是一个代理对象

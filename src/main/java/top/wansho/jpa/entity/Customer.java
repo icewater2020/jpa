@@ -1,9 +1,11 @@
-package top.wansho.jpa.helloworld;
+package top.wansho.jpa.entity;
 
 import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author wanshuo

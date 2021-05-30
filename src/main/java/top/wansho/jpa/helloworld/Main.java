@@ -1,7 +1,7 @@
 package top.wansho.jpa.helloworld;
 
 import lombok.extern.slf4j.Slf4j;
-import top.wansho.jpa.helloworld.Customer;
+import top.wansho.jpa.entity.Customer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
