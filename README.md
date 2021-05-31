@@ -129,8 +129,6 @@ EntityManager entityManager = entityManagerFactory.createEntityManager(map);
 
 #### find / getReference / persist / remove / merge
 
-<img align="left" src="assets/image-20210530101236627.png" alt="image-20210530101236627" style="zoom:80%;" />
-
 ```java
 package top.wansho.jpa;
 
