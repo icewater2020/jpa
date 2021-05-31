@@ -1,6 +1,7 @@
 package top.wansho.jpa.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import java.util.Set;
 @Data
 @ToString
 @Entity
+@NoArgsConstructor
 @Table(name = "JPA_CUSTOMERS")
 public class Customer {
     @Id
@@ -23,4 +25,9 @@ public class Customer {
     private String lastName;
     private String email;
     private Integer age;
+
+    public Customer(String lastName, Integer age) {
+        this.lastName = lastName;
+        this.age = age;
+    }
 }
