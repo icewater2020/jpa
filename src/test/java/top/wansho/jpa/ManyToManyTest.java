@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.stream.Collectors;
 
 /**
  * @author wanshuo
@@ -57,10 +58,13 @@ public class ManyToManyTest {
         Category category2 = new Category();
         category2.setCategoryName("category2");
 
+        // 将维护权交给了 item，所以 item 和 category 的关系必填
         item1.getCategories().add(category1);
         item1.getCategories().add(category2);
+        item2.getCategories().add(category1);
+        item2.getCategories().add(category2);
 
-//        category1.getItems().add(item1); // 引用互相调用导致栈溢出
+        category1.getItems().add(item1); // 引用互相调用导致栈溢出
         category1.getItems().add(item2);
         category2.getItems().add(item2);
 
@@ -68,7 +72,17 @@ public class ManyToManyTest {
         entityManager.persist(category2);
         entityManager.persist(item1);
         entityManager.persist(item2);
+    }
 
+    /***
+     * 不管是使用维护关系的一方获取，还是使用不维护关联关系的一方获取，SQL 语句相同
+     */
+    @Test
+    public void testManyToManyFind(){
+        Item item = entityManager.find(Item.class, 1);
+        item.getCategories().stream().forEach(category -> {
+            System.out.println(category);
+        });
     }
 
 }

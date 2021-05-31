@@ -1,6 +1,8 @@
 package top.wansho.jpa.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -12,7 +14,8 @@ import java.util.Stack;
  * @author wanshuo
  * @date 2021-05-30 20:33:27
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "jpa_category")
 public class Category {
